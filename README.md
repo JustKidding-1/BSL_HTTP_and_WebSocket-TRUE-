@@ -115,4 +115,6 @@ Screenshot 2: Browser Rendering
 
 The screenshot below shows the personal portfolio landing page rendered in Google Chrome. It includes a navigation bar, profile photo, name and profile summary, student information, and a button to explore the portfolio.
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0178802d-ca43-4e3e-a067-01952f27e08e" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/51270f5e-d679-4e99-99b1-64cf26064d26" />
 
+This project is open-source software licensed under the MIT License.

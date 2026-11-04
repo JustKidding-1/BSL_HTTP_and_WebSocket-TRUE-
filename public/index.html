@@ -1,120 +1,197 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BSL WebSocket Test Client</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-        #status {
-            font-weight: bold;
-            padding: 10px;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            background-color: #f0f0f0;
-        }
-        #controls {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        input[type="text"] {
-            flex-grow: 1;
-            padding: 8px;
-        }
-        button {
-            padding: 8px 16px;
-            cursor: pointer;
-        }
-        #log {
-            border: 1px solid #ccc;
-            height: 250px;
-            overflow-y: auto;
-            padding: 10px;
-            background-color: #fafafa;
-            font-family: monospace;
-        }
-        .sent { color: #0066cc; }
-        .received { color: #008800; }
-        .system { color: #888888; font-style: italic; }
-    </style>
+    <title>My Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <h2>BSL WebSocket Client</h2>
-    <div id="status">Status: Connecting...</div>
+    
+    <header>
+        <nav class="navbar">
+            <h2 class="logo">&lt;/&gt; My Portfolio</h2>
 
-    <div id="controls">
-        <input type="text" id="msgInput" placeholder="Enter message..." disabled />
-        <button id="sendBtn" disabled>Send</button>
-    </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div id="log"></div>
+    <section id="home" class="hero">
 
-    <script>
-        const wsUrl = "ws://localhost:8000";
-        const socket = new WebSocket(wsUrl);
+        <div class="profile-container">
+            <div class="profile-glow">
+                <img src="tingson.jpg" alt="My Profile Picture">
+            </div>
+        </div>
 
-        const statusDiv = document.getElementById("status");
-        const logDiv = document.getElementById("log");
-        const msgInput = document.getElementById("msgInput");
-        const sendBtn = document.getElementById("sendBtn");
+        <div class="hero-content">
+            <h1>Hello, I'm <span>Prinze June Rey E. Tingson</span></h1>
 
-        function appendLog(text, className) {
-            const entry = document.createElement("div");
-            entry.className = className;
-            entry.textContent = text;
-            logDiv.appendChild(entry);
-            logDiv.scrollTop = logDiv.scrollHeight;
-        }
+            <h2>🎓 BSIT-Networking Student</h2>
 
-        socket.onopen = function() {
-            statusDiv.textContent = "Status: Connected to " + wsUrl;
-            statusDiv.style.backgroundColor = "#d4edda";
-            statusDiv.style.color = "#155724";
-            msgInput.disabled = false;
-            sendBtn.disabled = false;
-            appendLog("[System] Handshake complete. WebSocket ready.", "system");
-        };
+            <p>
+                Welcome to my personal portfolio!
+                I am a passionate student interested in technology,
+                programming, and web development.
+                I enjoy learning new skills and creating
+                projects that improve my knowledge.
+            </p>
 
-        socket.onmessage = function(event) {
-            appendLog("[Server] " + event.data, "received");
-        };
+            <a href="#about" class="btn">Explore My Portfolio →</a>
+        </div>
 
-        socket.onclose = function(event) {
-            statusDiv.textContent = "Status: Disconnected";
-            statusDiv.style.backgroundColor = "#f8d7da";
-            statusDiv.style.color = "#721c24";
-            msgInput.disabled = true;
-            sendBtn.disabled = true;
-            appendLog("[System] Connection closed by server.", "system");
-        };
+    </section>
 
-        socket.onerror = function(error) {
-            appendLog("[Error] WebSocket error occurred.", "system");
-        };
+    <!-- About Me -->
+    <section id="about" class="section about-section">
 
-        function sendMessage() {
-            const text = msgInput.value.trim();
-            if (text.length > 0 && socket.readyState === WebSocket.OPEN) {
-                socket.send(text);
-                appendLog("[Client] " + text, "sent");
-                msgInput.value = "";
-            }
-        }
+        <div class="about-content">
+            <h2>About <span>Me</span></h2>
 
-        sendBtn.addEventListener("click", sendMessage);
-        msgInput.addEventListener("keypress", function(e) {
-            if (e.key === "Enter") {
-                sendMessage();
-            }
-        });
-    </script>
+            <p>
+                My name is Prinze June Rey E. Tingson. I am currently studying
+                BSIT-Networking and developing my skills in
+                programming and web development.
+            </p>
+
+            <p>
+                I am eager to explore new technologies, solve
+                problems, and improve my abilities as a developer.
+                My goal is to build useful and creative digital
+                solutions.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section">
+
+        <h2>Skills & <span>Technologies</span></h2>
+
+        <div class="skills-container">
+
+            <div class="skill-card">
+                <h3>HTML</h3>
+                <p>Building webpage structures.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>CSS</h3>
+                <p>Styling and designing websites.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>JavaScript</h3>
+                <p>Creating interactive web pages.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Python</h3>
+                <p>Learning programming and problem-solving.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Git & GitHub</h3>
+                <p>Managing and sharing projects.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+
+        <h2>Projects & <span>Achievements</span></h2>
+
+        <div class="projects-container">
+
+            <div class="project-card">
+                <h3>Personal Portfolio Website</h3>
+
+                <p>
+                    A personal website created using HTML and CSS
+                    to showcase my profile, skills, projects,
+                    and contact information.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h3>CCC181 Laboratory 1</h3>
+
+                <p>
+                    Developed a personal portfolio landing page
+                    using the Bonezegei Scripting Language
+                    framework.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h3>Academic Achievements</h3>
+
+                <p>
+                    Consistently achieved high grades in my
+                    coursework, demonstrating my dedication
+                    and commitment to learning.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+
+        <h2>Contact <span>Information</span></h2>
+
+        <p>Feel free to contact me through the following platforms.</p>
+
+        <div class="contact-info">
+
+            <p>
+                <strong>Email:</strong>
+                <a href=prinzejunerey.tingson@g.msuiit.edu.ph>
+                        prinzejunerey.tingson@g.msuiit.edu.ph
+                </a>
+            </p>
+
+            <p>
+                <strong>GitHub:</strong>
+                <a href=https://github.com/JustKidding-1 target="_blank">
+                    My GitHub Profile
+                </a>
+            </p>
+
+           
+            <p>
+                <strong>Facebook:</strong>
+                <a href=https://www.facebook.com/prinze.june.rey.tingson target="_blank">
+                    My Facebook Profile
+                </a>
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            &copy; 2026 Prinze June Rey E. Tingson |
+            CCC181 Personal Portfolio
+        </p>
+    </footer>
 
 </body>
 </html>
